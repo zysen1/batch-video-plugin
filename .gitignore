@@ -1,0 +1,21 @@
+# Runtime data (created by server.py / demo_test.py, never committed)
+data/
+*.db
+media/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+*.swp
+*.swo
+
+# Secrets (the project must never need any; guard anyway)
+.env
+*.pem
+*.key

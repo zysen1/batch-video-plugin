@@ -1,0 +1,19 @@
+body { font-family: system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; max-width: 960px; margin: 0 auto; padding: 16px; line-height: 1.6; color: #222; }
+header small { color: #666; font-weight: normal; }
+input, textarea, select { display: block; width: 100%; margin: 6px 0; padding: 8px; box-sizing: border-box; }
+label input, label select { display: inline-block; width: auto; }
+button { padding: 8px 14px; margin: 4px 4px 4px 0; cursor: pointer; }
+.btns { margin: 8px 0; }
+.proj { border: 1px solid #ddd; padding: 10px; margin: 8px 0; cursor: pointer; }
+.proj span { color: #666; margin-left: 8px; }
+.shot { border: 1px solid #ddd; padding: 12px; margin: 10px 0; }
+.takes { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+.take { border: 1px solid #ccc; padding: 8px; width: 300px; }
+.take.selected { border-color: #2a7; background: #f0faf5; }
+.take video, .final video { width: 100%; margin-top: 6px; background: #000; }
+.review { border-left: 4px solid #999; padding: 8px; margin: 8px 0; }
+.review.pass { border-color: #2a7; }
+.review.warn { border-color: #d90; }
+.review.fail { border-color: #c33; }
+.final { margin: 10px 0; }
+pre { background: #f6f6f6; padding: 12px; white-space: pre-wrap; }

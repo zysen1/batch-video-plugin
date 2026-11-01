@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>批量视频生成插件（开源版）</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <h1>批量视频生成插件 <small>开源重构版</small></h1>
+  <p>一次故事 → N 个 10 秒镜头 → 抽卡选片 → 终审 → 二次剪辑 → 定稿。本片全部画面由 AI 生成，非实拍。</p>
+</header>
+<main>
+  <section id="create">
+    <h2>新建项目</h2>
+    <input id="f-title" placeholder="片名（可选，默认用故事前 20 字）">
+    <textarea id="f-idea" rows="2" placeholder="一句话故事，例如：清晨面包房里，年轻面包师烤出第一炉面包"></textarea>
+    <label>类型 <input id="f-genre" value="记录"></label>
+    <label>方向
+      <select id="f-orientation">
+        <option value="landscape">横屏 16:9</option>
+        <option value="portrait">竖屏 9:16</option>
+      </select>
+    </label>
+    <label>每镜候选 <input id="f-takes" type="number" min="1" max="6" value="3"></label>
+    <label><input id="f-auto" type="checkbox" checked> 自动模式（首条完成即选定）</label>
+    <button onclick="createProject()">创建项目</button>
+  </section>
+
+  <section>
+    <h2>项目列表</h2>
+    <div id="project-list"></div>
+  </section>
+
+  <section id="detail" style="display:none">
+    <h2 id="d-title"></h2>
+    <p id="d-meta"></p>
+    <div class="btns">
+      <button onclick="launch()">开始生成</button>
+      <button onclick="doReview()">终审</button>
+      <button onclick="genPlan()">生成精剪方案</button>
+      <button onclick="doPolish()">执行精剪</button>
+      <button onclick="doRoughcut()">成片粗剪预览</button>
+      <button onclick="rerollFailed()">再抽不通过镜头</button>
+      <button onclick="refresh()">刷新</button>
+    </div>
+
+    <h3>风格圣经（锁定）</h3>
+    <textarea id="lock-char" rows="3" placeholder="人物锁定"></textarea>
+    <textarea id="lock-loc" rows="2" placeholder="场景锁定"></textarea>
+    <textarea id="lock-vis" rows="2" placeholder="视觉锁定"></textarea>
+    <button onclick="saveLocks()">写入锁定并重建全部提示词</button>
+
+    <h3>分镜规划</h3>
+    <label>镜头数 <input id="plan-n" type="number" min="1" max="12" value="4"></label>
+    <textarea id="plan-beats" rows="4" placeholder="每行一个分镜：画面描述 | 对白（对白可空）"></textarea>
+    <button onclick="doPlan()">规划分镜</button>
+
+    <h3>镜头与候选</h3>
+    <div id="shots"></div>
+
+    <h3>终审</h3>
+    <div id="reviews"></div>
+
+    <h3>精剪方案（可人工编辑后保存）</h3>
+    <textarea id="plan-json" rows="12"></textarea>
+    <button onclick="savePlan()">保存方案</button>
+
+    <h3>成片</h3>
+    <div id="finals"></div>
+
+    <h3>发布文案</h3>
+    <pre id="publish-copy"></pre>
+  </section>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>
